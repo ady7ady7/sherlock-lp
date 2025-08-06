@@ -157,41 +157,29 @@ function App() {
     >
       <div className="max-w-6xl mx-auto">
         {/* Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8 max-w-4xl mx-auto">
           {/* Brand Section */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start mb-4">
               <Search className="w-6 h-6 text-blue-400 mr-2" />
               <span className="gradient-text font-bold text-xl">Prompt Sherlock</span>
             </div>
-            <p className="text-gray-400 text-sm">
-              AI-powered creative sidekick that investigates images to create perfect AI art prompts.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              AI-powered creative sidekick that investigates images to create perfect AI art prompts. 
+              Transform your visual inspiration into precise, ready-to-use prompts for any AI engine.
             </p>
           </div>
 
           {/* Privacy Statement */}
-          <div className="text-center">
-            <h4 className="text-white font-semibold mb-3 flex items-center justify-center">
+          <div className="text-center md:text-right">
+            <h4 className="text-white font-semibold mb-3 flex items-center justify-center md:justify-end">
               <Shield className="w-5 h-5 mr-2 text-green-400" />
               Privacy Promise
             </h4>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm leading-relaxed">
               Your images are processed securely and deleted immediately after analysis. 
-              We never store or share your data.
+              We never store or share your data. Complete privacy guaranteed.
             </p>
-          </div>
-
-          {/* Powered By */}
-          <div className="text-center md:text-right">
-            <h4 className="text-white font-semibold mb-3 flex items-center justify-center md:justify-end">
-              <Sparkles className="w-5 h-5 mr-2 text-purple-400" />
-              Powered By
-            </h4>
-            <div className="space-y-1 text-gray-400 text-sm">
-              <p>Claude AI</p>
-              <p>React & Tailwind CSS</p>
-              <p>Framer Motion</p>
-            </div>
           </div>
         </div>
 
