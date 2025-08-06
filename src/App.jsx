@@ -1,9 +1,11 @@
 // =============================================================================
-// LANDING PAGE APP COMPONENT
+// LANDING PAGE APP COMPONENT WITH ROUTING
 // File: src/App.jsx
 // =============================================================================
 
 import React, { useEffect } from 'react';
+// Dodano import 'Link' dla nawigacji wewnątrz aplikacji bez przeładowania strony
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { 
   Search, 
   Zap, 
@@ -16,70 +18,75 @@ import {
   Lightbulb
 } from 'lucide-react';
 
-// Import components
+// Import komponentów
 import { SimpleMotion, preloadMotion } from './components/SimpleMotion';
 import { SimpleCarousel } from './components/SimpleCarousel';
 
+// Import stron
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import NotFound from './pages/NotFound';
+
 // =============================================================================
-// MAIN APP COMPONENT
+// KOMPONENT STRONY GŁÓWNEJ (LANDING PAGE)
 // =============================================================================
 
-function App() {
-  // Preload motion after component mounts
+const LandingPage = () => {
+  // Wstępne ładowanie animacji po zamontowaniu komponentu
   useEffect(() => {
     preloadMotion();
   }, []);
 
   // =============================================================================
-  // FEATURE DATA
+  // DANE FUNKCJI (FEATURES)
   // =============================================================================
 
   const features = [
     {
       icon: Search,
-      title: 'AI Analysis',
-      description: 'Sherlock "investigates" your images, extracting style, mood, composition, and subject matter.',
+      title: 'Analiza AI',
+      description: 'Sherlock "bada" Twoje obrazy, wydobywając styl, nastrój, kompozycję i tematykę.',
       bgGradient: 'from-blue-500/10 to-cyan-500/10'
     },
     {
       icon: Zap,
-      title: 'Engine Specific Prompts',
-      description: 'Choose your target engine (Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, etc.) (Coming soon)',
+      title: 'Prompty dla konkretnych silników',
+      description: 'Wybierz docelowy silnik (Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, itp.) (Wkrótce)',
       bgGradient: 'from-yellow-500/10 to-orange-500/10'
     },
     {
       icon: Palette,
-      title: 'Style & Character Profiles',
-      description: 'Build a library of recurring styles and characters for consistent branding. (Coming soon)',
+      title: 'Profile stylów i postaci',
+      description: 'Zbuduj bibliotekę powtarzalnych stylów i postaci dla spójnego brandingu. (Wkrótce)',
       bgGradient: 'from-purple-500/10 to-pink-500/10'
     },
     {
       icon: Lightbulb,
-      title: 'Instant Inspiration',
-      description: 'Turn any image into a perfect AI prompt—no guesswork.',
+      title: 'Natychmiastowa inspiracja',
+      description: 'Zamień dowolny obraz w idealny prompt dla AI – bez zgadywania.',
       bgGradient: 'from-green-500/10 to-emerald-500/10'
     },
     {
       icon: Target,
-      title: 'Style Consistency',
-      description: 'Keep your unique look across projects.',
+      title: 'Spójność stylu',
+      description: 'Zachowaj swój unikalny wygląd we wszystkich projektach.',
       bgGradient: 'from-red-500/10 to-rose-500/10'
     },
     {
       icon: Clock,
-      title: 'Save Time',
-      description: 'Skip manual prompt writing, focus on creating.',
+      title: 'Oszczędność czasu',
+      description: 'Pomiń ręczne pisanie promptów i skup się na tworzeniu.',
       bgGradient: 'from-indigo-500/10 to-violet-500/10'
     }
   ];
 
   // =============================================================================
-  // RENDER COMPONENTS
+  // RENDEROWANIE KOMPONENTÓW
   // =============================================================================
 
   const renderHeader = () => (
     <header className="text-center mb-16">
-      {/* Logo and Brand */}
+      {/* Logo i nazwa marki */}
       <SimpleMotion
         className="flex items-center justify-center mb-6"
         whileHover={{ scale: 1.05 }}
@@ -101,15 +108,15 @@ function App() {
         </h1>
       </SimpleMotion>
 
-      {/* Marketing Tagline */}
+      {/* Slogan marketingowy */}
       <div className="max-w-3xl mx-auto mb-8">
         <p className="text-blue-200 text-lg md:text-xl lg:text-2xl mb-4 italic">
-          Uncover. Create. Repeat.<br />
-          Turn any image into the perfect AI art prompt.
+          Odkrywaj. Twórz. Powtarzaj.<br />
+          Zamień dowolny obraz w idealny prompt dla AI.
         </p>
       </div>
 
-      {/* Marketing Description */}
+      {/* Opis marketingowy */}
       <SimpleMotion
         className="max-w-4xl mx-auto mb-12 glass-effect p-8 rounded-xl"
         initial={{ opacity: 0, y: 20 }}
@@ -117,27 +124,30 @@ function App() {
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         <p className="text-white text-lg md:text-xl leading-relaxed mb-8 text-center">
-          <strong className="gradient-text">Upload up to 10 images</strong> and let Prompt Sherlock instantly "investigate" every detail—style, mood, characters, composition, and more. Get ready-to-use prompts, tailored for top AI engines like Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, and more.
+          <strong className="gradient-text">Prześlij do 10 obrazów</strong> i pozwól, aby Prompt Sherlock natychmiast "zbadał" każdy szczegół – styl, nastrój, postacie, kompozycję i wiele więcej. Otrzymaj gotowe do użycia prompty, dostosowane do czołowych silników AI, takich jak Midjourney, DALL·E, Stable Diffusion, Gemini Imagen i innych.
         </p>
         
-        {/* CTA Button */}
+        {/* Przycisk CTA (Call to Action) */}
         <div className="text-center">
           <SimpleMotion
+            as="a" // Użycie 'as', jeśli SimpleMotion owija natywny tag, a nie inny komponent
+            href="https://api.promptsherlock.ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className="glass-button px-10 py-5 text-white font-bold text-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-blue-400/30 mx-auto cursor-pointer inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => window.open('https://api.promptsherlock.ai', '_blank')}
           >
-            Get Started Now
+            Zacznij już teraz
           </SimpleMotion>
           
           <p className="text-gray-400 text-sm mt-4">
-            Upload Your First Image and See Sherlock in Action!
+            Prześlij swój pierwszy obraz i zobacz Sherlocka w akcji!
           </p>
         </div>
       </SimpleMotion>
 
-      {/* Feature Carousel */}
+      {/* Karuzela z funkcjami */}
       <SimpleMotion
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -156,44 +166,52 @@ function App() {
       transition={{ duration: 0.6, delay: 1.2 }}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Footer Content */}
+        {/* Zawartość stopki */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8 max-w-4xl mx-auto">
-          {/* Brand Section */}
+          {/* Sekcja marki */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start mb-4">
               <Search className="w-6 h-6 text-blue-400 mr-2" />
               <span className="gradient-text font-bold text-xl">Prompt Sherlock</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              AI-powered creative sidekick that investigates images to create perfect AI art prompts. 
-              Transform your visual inspiration into precise, ready-to-use prompts for any AI engine.
+              Kreatywny asystent oparty na AI, który bada obrazy, aby tworzyć idealne prompty do generowania grafiki.
+              Przekształć swoją wizualną inspirację w precyzyjne, gotowe do użycia prompty dla dowolnego silnika AI.
             </p>
           </div>
 
-          {/* Privacy Statement */}
+          {/* Oświadczenie o prywatności */}
           <div className="text-center md:text-right">
             <h4 className="text-white font-semibold mb-3 flex items-center justify-center md:justify-end">
               <Shield className="w-5 h-5 mr-2 text-green-400" />
-              Privacy Promise
+              Obietnica prywatności
             </h4>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Your images are processed securely and deleted immediately after analysis. 
-              We never store or share your data. Complete privacy guaranteed.
+              Twoje obrazy są przetwarzane bezpiecznie i usuwane natychmiast po analizie.
+              Nigdy nie przechowujemy ani nie udostępniamy Twoich danych. Pełna prywatność gwarantowana.
             </p>
           </div>
         </div>
 
-        {/* Copyright */}
+        {/* Prawa autorskie i linki prawne */}
         <div className="text-center py-6 border-t border-white/5 mt-8">
           <SimpleMotion 
-            className="text-gray-500 text-sm flex items-center justify-center"
+            className="text-gray-500 text-sm flex items-center justify-center mb-3"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for the creative community
+            Stworzone z <Heart className="w-4 h-4 mx-1 text-red-400" /> dla społeczności kreatywnej
           </SimpleMotion>
-          <p className="text-gray-600 text-xs mt-2">
-            © 2024 Prompt Sherlock. Privacy-focused AI prompt generation.
+          
+          {/* Linki prawne (użycie <Link> dla lepszej nawigacji) */}
+          <div className="flex items-center justify-center space-x-4 mb-2 text-gray-400 text-sm">
+            <Link to="/privacy" className="hover:text-blue-400 transition-colors">Polityka Prywatności</Link>
+            <span>•</span>
+            <Link to="/terms" className="hover:text-blue-400 transition-colors">Warunki Korzystania</Link>
+          </div>
+          
+          <p className="text-gray-600 text-xs">
+            © 2025 Prompt Sherlock. Generowanie promptów AI z poszanowaniem prywatności.
           </p>
         </div>
       </div>
@@ -201,7 +219,7 @@ function App() {
   );
 
   // =============================================================================
-  // MAIN RENDER
+  // GŁÓWNE RENDEROWANIE
   // =============================================================================
 
   return (
@@ -219,6 +237,24 @@ function App() {
       </div>
     </div>
   );
+};
+
+// =============================================================================
+// GŁÓWNY KOMPONENT APLIKACJI Z ROUTINGIEM
+// =============================================================================
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
 }
 
+// Poprawiony export - usunięto zbędny tekst
 export default App;
