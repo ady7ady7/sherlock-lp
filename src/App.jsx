@@ -4,7 +4,7 @@
 // =============================================================================
 
 import React, { useEffect } from 'react';
-// Dodano import 'Link' dla nawigacji wewnątrz aplikacji bez przeładowania strony
+// Added Link import for in-app navigation without page reload
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { 
   Search, 
@@ -18,75 +18,75 @@ import {
   Lightbulb
 } from 'lucide-react';
 
-// Import komponentów
+// Component imports
 import { SimpleMotion, preloadMotion } from './components/SimpleMotion';
 import { SimpleCarousel } from './components/SimpleCarousel';
 
-// Import stron
+// Page imports
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 
 // =============================================================================
-// KOMPONENT STRONY GŁÓWNEJ (LANDING PAGE)
+// LANDING PAGE COMPONENT
 // =============================================================================
 
 const LandingPage = () => {
-  // Wstępne ładowanie animacji po zamontowaniu komponentu
+  // Preload animations on component mount
   useEffect(() => {
     preloadMotion();
   }, []);
 
   // =============================================================================
-  // DANE FUNKCJI (FEATURES)
+  // FEATURES DATA
   // =============================================================================
 
   const features = [
     {
       icon: Search,
-      title: 'Analiza AI',
-      description: 'Sherlock "bada" Twoje obrazy, wydobywając styl, nastrój, kompozycję i tematykę.',
+      title: 'AI Analysis',
+      description: 'Sherlock "investigates" your images, extracting style, mood, composition, and themes.',
       bgGradient: 'from-blue-500/10 to-cyan-500/10'
     },
     {
       icon: Zap,
-      title: 'Prompty dla konkretnych silników',
-      description: 'Wybierz docelowy silnik (Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, itp.) (Wkrótce)',
+      title: 'Engine-Specific Prompts',
+      description: 'Choose target engine (Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, etc.) (Coming Soon)',
       bgGradient: 'from-yellow-500/10 to-orange-500/10'
     },
     {
       icon: Palette,
-      title: 'Profile stylów i postaci',
-      description: 'Zbuduj bibliotekę powtarzalnych stylów i postaci dla spójnego brandingu. (Wkrótce)',
+      title: 'Style & Character Profiles',
+      description: 'Build a library of repeatable styles and characters for consistent branding. (Coming Soon)',
       bgGradient: 'from-purple-500/10 to-pink-500/10'
     },
     {
       icon: Lightbulb,
-      title: 'Natychmiastowa inspiracja',
-      description: 'Zamień dowolny obraz w idealny prompt dla AI – bez zgadywania.',
+      title: 'Instant Inspiration',
+      description: 'Turn any image into the perfect AI prompt – no guesswork.',
       bgGradient: 'from-green-500/10 to-emerald-500/10'
     },
     {
       icon: Target,
-      title: 'Spójność stylu',
-      description: 'Zachowaj swój unikalny wygląd we wszystkich projektach.',
+      title: 'Style Consistency',
+      description: 'Maintain your unique visual identity across all projects.',
       bgGradient: 'from-red-500/10 to-rose-500/10'
     },
     {
       icon: Clock,
-      title: 'Oszczędność czasu',
-      description: 'Pomiń ręczne pisanie promptów i skup się na tworzeniu.',
+      title: 'Time Saving',
+      description: 'Skip manual prompt writing and focus on creating.',
       bgGradient: 'from-indigo-500/10 to-violet-500/10'
     }
   ];
 
   // =============================================================================
-  // RENDEROWANIE KOMPONENTÓW
+  // COMPONENT RENDERING
   // =============================================================================
 
   const renderHeader = () => (
     <header className="text-center mb-16">
-      {/* Logo i nazwa marki */}
+      {/* Logo and brand name */}
       <SimpleMotion
         className="flex items-center justify-center mb-6"
         whileHover={{ scale: 1.05 }}
@@ -108,15 +108,15 @@ const LandingPage = () => {
         </h1>
       </SimpleMotion>
 
-      {/* Slogan marketingowy */}
+      {/* Marketing slogan */}
       <div className="max-w-3xl mx-auto mb-8">
         <p className="text-blue-200 text-lg md:text-xl lg:text-2xl mb-4 italic">
-          Odkrywaj. Twórz. Powtarzaj.<br />
-          Zamień dowolny obraz w idealny prompt dla AI.
+          Discover. Create. Repeat.<br />
+          Turn any image into the perfect AI prompt.
         </p>
       </div>
 
-      {/* Opis marketingowy */}
+      {/* Marketing description */}
       <SimpleMotion
         className="max-w-4xl mx-auto mb-12 glass-effect p-8 rounded-xl"
         initial={{ opacity: 0, y: 20 }}
@@ -124,13 +124,13 @@ const LandingPage = () => {
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         <p className="text-white text-lg md:text-xl leading-relaxed mb-8 text-center">
-          <strong className="gradient-text">Prześlij do 10 obrazów</strong> i pozwól, aby Prompt Sherlock natychmiast "zbadał" każdy szczegół – styl, nastrój, postacie, kompozycję i wiele więcej. Otrzymaj gotowe do użycia prompty, dostosowane do czołowych silników AI, takich jak Midjourney, DALL·E, Stable Diffusion, Gemini Imagen i innych.
+          <strong className="gradient-text">Upload up to 10 images</strong> and let Prompt Sherlock instantly "investigate" every detail – style, mood, characters, composition, and much more. Get ready-to-use prompts, tailored for leading AI engines like Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, and others.
         </p>
         
-        {/* Przycisk CTA (Call to Action) */}
+        {/* Call to Action button */}
         <div className="text-center">
           <SimpleMotion
-            as="a" // Użycie 'as', jeśli SimpleMotion owija natywny tag, a nie inny komponent
+            as="a"
             href="https://api.promptsherlock.ai"
             target="_blank"
             rel="noopener noreferrer"
@@ -138,16 +138,16 @@ const LandingPage = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Zacznij już teraz
+            Start Now
           </SimpleMotion>
           
           <p className="text-gray-400 text-sm mt-4">
-            Prześlij swój pierwszy obraz i zobacz Sherlocka w akcji!
+            Upload your first image and see Sherlock in action!
           </p>
         </div>
       </SimpleMotion>
 
-      {/* Karuzela z funkcjami */}
+      {/* Features carousel */}
       <SimpleMotion
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -166,52 +166,52 @@ const LandingPage = () => {
       transition={{ duration: 0.6, delay: 1.2 }}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Zawartość stopki */}
+        {/* Footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8 max-w-4xl mx-auto">
-          {/* Sekcja marki */}
+          {/* Brand section */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start mb-4">
               <Search className="w-6 h-6 text-blue-400 mr-2" />
               <span className="gradient-text font-bold text-xl">Prompt Sherlock</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Kreatywny asystent oparty na AI, który bada obrazy, aby tworzyć idealne prompty do generowania grafiki.
-              Przekształć swoją wizualną inspirację w precyzyjne, gotowe do użycia prompty dla dowolnego silnika AI.
+              AI-powered creative assistant that investigates images to create perfect prompts for graphic generation.
+              Transform your visual inspiration into precise, ready-to-use prompts for any AI engine.
             </p>
           </div>
 
-          {/* Oświadczenie o prywatności */}
+          {/* Privacy statement */}
           <div className="text-center md:text-right">
             <h4 className="text-white font-semibold mb-3 flex items-center justify-center md:justify-end">
               <Shield className="w-5 h-5 mr-2 text-green-400" />
-              Obietnica prywatności
+              Privacy Promise
             </h4>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Twoje obrazy są przetwarzane bezpiecznie i usuwane natychmiast po analizie.
-              Nigdy nie przechowujemy ani nie udostępniamy Twoich danych. Pełna prywatność gwarantowana.
+              Your images are processed securely and deleted immediately after analysis.
+              We never store or share your data. Full privacy guaranteed.
             </p>
           </div>
         </div>
 
-        {/* Prawa autorskie i linki prawne */}
+        {/* Copyright and legal links */}
         <div className="text-center py-6 border-t border-white/5 mt-8">
           <SimpleMotion 
             className="text-gray-500 text-sm flex items-center justify-center mb-3"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            Stworzone z <Heart className="w-4 h-4 mx-1 text-red-400" /> dla społeczności kreatywnej
+            Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for the creative community
           </SimpleMotion>
           
-          {/* Linki prawne (użycie <Link> dla lepszej nawigacji) */}
+          {/* Legal links (using Link for better navigation) */}
           <div className="flex items-center justify-center space-x-4 mb-2 text-gray-400 text-sm">
-            <Link to="/privacy" className="hover:text-blue-400 transition-colors">Polityka Prywatności</Link>
+            <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
             <span>•</span>
-            <Link to="/terms" className="hover:text-blue-400 transition-colors">Warunki Korzystania</Link>
+            <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
           </div>
           
           <p className="text-gray-600 text-xs">
-            © 2025 Prompt Sherlock. Generowanie promptów AI z poszanowaniem prywatności.
+            © 2025 Prompt Sherlock. AI prompt generation with privacy in mind.
           </p>
         </div>
       </div>
@@ -219,7 +219,7 @@ const LandingPage = () => {
   );
 
   // =============================================================================
-  // GŁÓWNE RENDEROWANIE
+  // MAIN RENDERING
   // =============================================================================
 
   return (
@@ -240,7 +240,7 @@ const LandingPage = () => {
 };
 
 // =============================================================================
-// GŁÓWNY KOMPONENT APLIKACJI Z ROUTINGIEM
+// MAIN APP COMPONENT WITH ROUTING
 // =============================================================================
 
 function App() {
@@ -256,5 +256,4 @@ function App() {
   );
 }
 
-// Poprawiony export - usunięto zbędny tekst
 export default App;
