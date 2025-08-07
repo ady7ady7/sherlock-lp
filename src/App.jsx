@@ -1,10 +1,9 @@
 // =============================================================================
-// LANDING PAGE APP COMPONENT WITH ROUTING
-// File: src/App.jsx
+// LANDING PAGE APP COMPONENT WITH DEMO VIDEO
+// File: src/App.jsx - Updated with video integration
 // =============================================================================
 
 import React, { useEffect } from 'react';
-// Added Link import for in-app navigation without page reload
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { 
   Search, 
@@ -21,6 +20,7 @@ import {
 // Component imports
 import { SimpleMotion, preloadMotion } from './components/SimpleMotion';
 import { SimpleCarousel } from './components/SimpleCarousel';
+import DemoVideo from './components/DemoVideo'; // NEW: Import demo video
 
 // Page imports
 import Privacy from './pages/Privacy';
@@ -88,7 +88,7 @@ const LandingPage = () => {
     <header className="text-center mb-16">
       {/* Logo and brand name */}
       <SimpleMotion
-        className="flex items-center justify-center mb-6"
+        className="flex items-center justify-center mb-8"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.2 }}
       >
@@ -116,12 +116,15 @@ const LandingPage = () => {
         </p>
       </div>
 
+      {/* NEW: Demo Video Section - Right below the logo */}
+      <DemoVideo className="mb-12" />
+
       {/* Marketing description */}
       <SimpleMotion
         className="max-w-4xl mx-auto mb-12 glass-effect p-8 rounded-xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        transition={{ duration: 0.6, delay: 0.6 }} // Increased delay to account for video
       >
         <p className="text-white text-lg md:text-xl leading-relaxed mb-8 text-center">
           <strong className="gradient-text">Upload up to 10 images</strong> and let Prompt Sherlock instantly "investigate" every detail – style, mood, characters, composition, and much more. Get ready-to-use prompts, tailored for leading AI engines like Midjourney, DALL·E, Stable Diffusion, Gemini Imagen, and others.
@@ -148,7 +151,7 @@ const LandingPage = () => {
       <SimpleMotion
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
+        transition={{ duration: 0.5, delay: 1.0 }} // Increased delay
       >
         <SimpleCarousel features={features} />
       </SimpleMotion>
@@ -160,7 +163,7 @@ const LandingPage = () => {
       className="mt-20 pt-12 border-t border-white/10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: 1.2 }}
+      transition={{ duration: 0.6, delay: 1.4 }}
     >
       <div className="max-w-6xl mx-auto">
         {/* Footer content */}
@@ -200,7 +203,7 @@ const LandingPage = () => {
             Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for the creative community
           </SimpleMotion>
           
-          {/* Legal links (using Link for better navigation) */}
+          {/* Legal links */}
           <div className="flex items-center justify-center space-x-4 mb-2 text-gray-400 text-sm">
             <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
             <span>•</span>
