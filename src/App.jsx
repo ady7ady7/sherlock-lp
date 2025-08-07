@@ -131,7 +131,7 @@ const LandingPage = () => {
         <div className="text-center">
           <SimpleMotion
             as="a"
-            href="https://api.promptsherlock.ai"
+            href="https://app.promptsherlock.ai"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-button px-10 py-5 text-white font-bold text-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-blue-400/30 mx-auto cursor-pointer inline-block"
