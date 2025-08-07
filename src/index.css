@@ -216,9 +216,11 @@ body {
 
 /* Glass morphism button effect */
 .glass-button {
-  @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-2xl;
-  @apply hover:bg-white/20 hover:border-white/30 hover:shadow-blue-500/25;
+  @apply backdrop-blur-lg border border-white/20 rounded-xl shadow-2xl;
+  @apply hover:border-white/30 hover:shadow-blue-500/25;
   @apply transition-all duration-300 relative overflow-hidden;
+  /* Remove background so gradient shows through */
+  background: var(--tw-gradient-from), var(--tw-gradient-to), var(--tw-gradient-stops);
 }
 
 .glass-button::before {

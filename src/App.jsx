@@ -129,17 +129,17 @@ const LandingPage = () => {
         
         {/* Call to Action button */}
         <div className="text-center">
-          <SimpleMotion
-            as="a"
+          <a
             href="https://app.promptsherlock.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-button px-10 py-5 text-white font-bold text-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-blue-400/30 mx-auto cursor-pointer inline-block"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+            className="inline-block px-10 py-5 text-white font-bold text-xl backdrop-blur-lg rounded-xl border border-blue-400/30 mx-auto cursor-pointer relative overflow-hidden group bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30 hover:from-blue-500/50 hover:via-purple-500/50 hover:to-blue-500/50 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            Start Now
-          </SimpleMotion>
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            
+            <span className="relative z-10">Start Now</span>
+          </a>
           
           <p className="text-gray-400 text-sm mt-4">
             Upload your first image and see Sherlock in action!
