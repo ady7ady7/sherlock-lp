@@ -230,20 +230,12 @@ const DemoVideo = ({ className = "" }) => {
         {/* Video Label */}
         <div className="absolute top-4 left-4">
           <div className="bg-black/60 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span className="text-white text-sm font-medium">Live Demo</span>
+            <span className="text-white text-sm font-medium">App Demo</span>
           </div>
         </div>
       </div>
 
-      {/* Video Description */}
-      <div className="text-center mt-6">
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-          See Prompt Sherlock in Action
-        </h3>
-        <p className="text-gray-300 max-w-2xl mx-auto">
-          Watch how it analyzes your images and generates perfect prompts in seconds. 
-        </p>
-      </div>
+
     </SimpleMotion>
   );
 };
