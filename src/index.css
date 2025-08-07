@@ -211,3 +211,49 @@ body {
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
 }
+
+
+
+/* Glass morphism button effect */
+.glass-button {
+  @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-2xl;
+  @apply hover:bg-white/20 hover:border-white/30 hover:shadow-blue-500/25;
+  @apply transition-all duration-300 relative overflow-hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+/* Glass effect for other elements */
+.glass-effect {
+  @apply backdrop-blur-lg bg-white/10 border border-white/20;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent;
+}
+
+/* Enhanced gradient text with animation */
+.gradient-text-animated {
+  @apply bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent;
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
