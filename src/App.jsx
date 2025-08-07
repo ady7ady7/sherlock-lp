@@ -133,7 +133,7 @@ const LandingPage = () => {
             href="https://app.promptsherlock.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 text-white font-semibold text-xl rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 border hover:border-blue-300/60 shadow-lg hover:shadow-xl hover:shadow-blue-500/25"
+            className="inline-block px-8 py-4 text-white font-semibold text-xl rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl hover:shadow-blue-500/25"
           >
             Start Now
           </a>
